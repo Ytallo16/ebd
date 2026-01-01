@@ -41,47 +41,65 @@ class StudentsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      padding: const EdgeInsets.all(16),
-      itemCount: _mockStudents.length,
-      separatorBuilder: (context, index) => const Divider(height: 1),
-      itemBuilder: (context, index) {
-        final student = _mockStudents[index];
-        final color = _getColorFromName(student['name']!);
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Color(0xFFE3F2FD), Color(0xFFBBDEFB)],
+        ),
+      ),
+      child: ListView.separated(
+        padding: const EdgeInsets.all(16),
+        itemCount: _mockStudents.length,
+        separatorBuilder: (context, index) => const SizedBox(height: 8),
+        itemBuilder: (context, index) {
+          final student = _mockStudents[index];
+          final color = _getColorFromName(student['name']!);
 
-        return ListTile(
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 8,
-            horizontal: 4,
-          ),
-          leading: CircleAvatar(
-            backgroundColor: color,
-            child: Text(
-              student['name']![0].toUpperCase(),
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+          return Card(
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: ListTile(
+              contentPadding: const EdgeInsets.symmetric(
+                vertical: 8,
+                horizontal: 16,
+              ),
+              leading: CircleAvatar(
+                backgroundColor: color,
+                child: Text(
+                  student['name']![0].toUpperCase(),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              title: Text(
+                student['name']!,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              subtitle: Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(
+                  student['class']!,
+                  style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                ),
+              ),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 14,
+                color: Colors.grey,
               ),
             ),
-          ),
-          title: Text(
-            student['name']!,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-          ),
-          subtitle: Padding(
-            padding: const EdgeInsets.only(top: 4),
-            child: Text(
-              student['class']!,
-              style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-            ),
-          ),
-          trailing: const Icon(
-            Icons.arrow_forward_ios,
-            size: 14,
-            color: Colors.grey,
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

@@ -27,11 +27,47 @@ class _HomeShellState extends State<HomeShell> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'ADDIRCEU EBD',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        backgroundColor: Colors.white,
+        foregroundColor: const Color(0xFF0B4C86),
+        surfaceTintColor: Colors.transparent,
+        title: Row(
+          children: [
+            SizedBox(
+              height: 36,
+              width: 36,
+              child: Image.asset(
+                'assets/images/logo.png',
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  width: 36,
+                  height: 36,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0xFF0B4C86),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'AD',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(width: 12),
+            const Text(
+              'EBD',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF0B4C86),
+              ),
+            ),
+          ],
         ),
-        backgroundColor: Colors.blue,
         elevation: 2,
       ),
       body: _screens[_currentIndex],
