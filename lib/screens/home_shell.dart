@@ -14,14 +14,40 @@ class HomeShell extends StatefulWidget {
 class _HomeShellState extends State<HomeShell> {
   int _currentIndex = 0;
 
-  final List<Widget> _screens = const [
-    LessonsScreen(),
-    ClassesScreen(),
-    StudentsScreen(),
-    DashboardScreen(),
+  final _lessonsKey = GlobalKey<LessonsScreenState>();
+  final _classesKey = GlobalKey<ClassesScreenState>();
+  final _studentsKey = GlobalKey<StudentsScreenState>();
+
+  late final List<Widget> _screens = [
+    LessonsScreen(key: _lessonsKey),
+    ClassesScreen(key: _classesKey),
+    StudentsScreen(key: _studentsKey),
+    const DashboardScreen(),
   ];
 
   final List<String> _titles = const ['Lições', 'Turmas', 'Alunos', 'Painel'];
+
+  Widget? _buildAction() {
+    switch (_currentIndex) {
+      case 0:
+        return IconButton(
+          icon: const Icon(Icons.add),
+          onPressed: () => _lessonsKey.currentState?.openAddLesson(),
+        );
+      case 1:
+        return IconButton(
+          icon: const Icon(Icons.add),
+          onPressed: () => _classesKey.currentState?.openAddClass(),
+        );
+      case 2:
+        return IconButton(
+          icon: const Icon(Icons.add),
+          onPressed: () => _studentsKey.currentState?.openAddStudent(),
+        );
+      default:
+        return null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +95,7 @@ class _HomeShellState extends State<HomeShell> {
           ],
         ),
         elevation: 2,
+        actions: [if (_buildAction() != null) _buildAction()!],
       ),
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
