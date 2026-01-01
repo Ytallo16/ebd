@@ -19,7 +19,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: kPrimaryDark),
         primaryColor: kPrimaryDark,
         useMaterial3: true,
-        appBarTheme: const AppBarTheme(centerTitle: false, elevation: 2, backgroundColor: kPrimaryDark),
+        appBarTheme: const AppBarTheme(
+          centerTitle: false,
+          elevation: 2,
+          backgroundColor: kPrimaryDark,
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(backgroundColor: kPrimaryDark),
         ),

@@ -122,30 +122,30 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: const EdgeInsets.all(24.0),
                       child: Column(
                         children: [
-                              TextField(
-                                controller: _userController,
-                                keyboardType: TextInputType.text,
-                                decoration: InputDecoration(
-                                  labelText: 'Usuário',
-                                  prefixIcon: const Icon(
-                                    Icons.person,
-                                    color: Color(0xFF0B4C86),
-                                  ),
-                                  filled: true,
-                                  fillColor: const Color(0xFFF5F8FA),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                    borderSide: const BorderSide(
-                                      color: Color(0xFF0B4C86),
-                                      width: 2,
-                                    ),
-                                  ),
+                          TextField(
+                            controller: _userController,
+                            keyboardType: TextInputType.text,
+                            decoration: InputDecoration(
+                              labelText: 'Usuário',
+                              prefixIcon: const Icon(
+                                Icons.person,
+                                color: Color(0xFF0B4C86),
+                              ),
+                              filled: true,
+                              fillColor: const Color(0xFFF5F8FA),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide.none,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: const BorderSide(
+                                  color: Color(0xFF0B4C86),
+                                  width: 2,
                                 ),
                               ),
+                            ),
+                          ),
                           const SizedBox(height: 16),
                           TextField(
                             controller: _passwordController,
