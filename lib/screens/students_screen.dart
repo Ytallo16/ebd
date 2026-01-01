@@ -383,7 +383,7 @@ class StudentsScreenState extends State<StudentsScreen> {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [Color(0xFFE3F2FD), Color(0xFFBBDEFB)],
+          colors: [Color(0xFF1976D2), Color(0xFF42A5F5)],
         ),
       ),
       child: ListView.separated(

@@ -48,8 +48,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   // Logo
                   Container(
-                    height: 220,
-                    padding: const EdgeInsets.all(12),
+                    height: 160,
+                    padding: const EdgeInsets.all(10),
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       shape: BoxShape.circle,
@@ -64,12 +64,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: ClipOval(
                       child: Image.asset(
                         'assets/images/logo.png',
-                        width: 196,
-                        height: 196,
+                        width: 136,
+                        height: 136,
                         fit: BoxFit.contain,
                         errorBuilder: (context, error, stackTrace) => Container(
-                          width: 180,
-                          height: 180,
+                          width: 120,
+                          height: 120,
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Color(0xFF0B4C86),
@@ -79,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               'AD',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 44,
+                                fontSize: 36,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

@@ -18,6 +18,8 @@ class _HomeShellState extends State<HomeShell> {
   final _classesKey = GlobalKey<ClassesScreenState>();
   final _studentsKey = GlobalKey<StudentsScreenState>();
 
+  late final PageController _pageController = PageController(initialPage: 0);
+
   late final List<Widget> _screens = [
     LessonsScreen(key: _lessonsKey),
     ClassesScreen(key: _classesKey),
@@ -97,13 +99,20 @@ class _HomeShellState extends State<HomeShell> {
         elevation: 2,
         actions: [if (_buildAction() != null) _buildAction()!],
       ),
-      body: _screens[_currentIndex],
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (index) => setState(() => _currentIndex = index),
+        children: _screens,
+        physics: const NeverScrollableScrollPhysics(),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+          _pageController.animateToPage(
+            index,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
+          );
         },
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.blue,
@@ -119,5 +128,11 @@ class _HomeShellState extends State<HomeShell> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 }
